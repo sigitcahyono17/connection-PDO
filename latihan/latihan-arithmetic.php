@@ -7,7 +7,7 @@
     <title>Latihan</title>
 </head>
 <body>
-    <form action="../action/penambahan_action.php" method="get">
+    <form action="" method="get">
         <input type="text" name="angka1" placeholder="Masukan angka"> +
         <input type="text" name="angka2" placeholder="Masukan angka">
         <button>Jumlah</button>
