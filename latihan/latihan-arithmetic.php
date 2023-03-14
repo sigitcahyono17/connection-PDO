@@ -12,5 +12,6 @@
         <input type="text" name="angka2" placeholder="Masukan angka">
         <button>Jumlah</button>
     </form>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, cumque. Placeat ullam, et cumque nulla quas doloremque! Aliquid similique nobis quas, consequuntur temporibus esse cum doloremque omnis optio commodi quo?
 </body>
 </html>
