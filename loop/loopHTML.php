@@ -43,6 +43,7 @@ $userIdentity = [
     <h1>Hello this is foreach with associative array Example</h1>
     <?php foreach ($userIdentity as $key => $value) : ?>
         <p>key = <?= $key ?> | value = <?= $value ?></p>
+        <?php echo "Disini test print {$value}" ?>
     <?php endforeach; ?>
 </body>
 </html>
