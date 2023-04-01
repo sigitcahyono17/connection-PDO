@@ -32,6 +32,9 @@ class Employee {
 }
 
 class Rider extends Employee {
+    public $bike;
+    public $type;
+    public $merk;
     //code
     public function setName(string $name)
     {
