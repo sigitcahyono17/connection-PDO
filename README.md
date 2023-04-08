@@ -50,3 +50,7 @@
     - https://drive.google.com/file/d/1xCAS41ChUYEOE1v9cQpwOoJPBVQ828UU/view
     - https://drive.google.com/file/d/1l-O6vZOa2rA_zyRdSVWFaNP3Kcj6UAJ-/view
     - https://drive.google.com/file/d/1VxTgc5HAiL2WjfMS1yUsr7WTI5f24bVd/view
+        - ***Latihan Pertemuan 6***
+            - https://drive.google.com/file/d/1V0nhsPvznSE-c0kJMYbU42ohZiHl6J38/view
+            - https://drive.google.com/file/d/1zP0ovTPFbiIh-4VpCMHU0mtY5VCskYS9/view
+            - https://drive.google.com/file/d/1bL1kM2DeP4Une_BSRrYu1ZjffdlZLe_R/view
