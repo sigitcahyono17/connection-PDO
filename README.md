@@ -54,3 +54,6 @@
             - https://drive.google.com/file/d/1V0nhsPvznSE-c0kJMYbU42ohZiHl6J38/view
             - https://drive.google.com/file/d/1zP0ovTPFbiIh-4VpCMHU0mtY5VCskYS9/view
             - https://drive.google.com/file/d/1bL1kM2DeP4Une_BSRrYu1ZjffdlZLe_R/view
+5. Meeting 7 (PHP DATABASE CONNECTION)
+    - https://drive.google.com/file/d/1CRHVeaYcBpv9ycero5teWEvZe8xC_mlS/view
+    - https://drive.google.com/file/d/1spHwc9UCWI7HDkxyeMUwjmNwLGVKRUuI/view
