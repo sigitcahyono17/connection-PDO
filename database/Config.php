@@ -18,5 +18,3 @@ $mysqlConnection = new MysqlConnectiontion(
 );
 
 $connection = $mysqlConnection->getConnection();
-
-

@@ -1,6 +1,14 @@
 <?php
     require_once './database/Config.php';
-    $query    = $connection->query("SELECT * FROM students;");
+    if (isset($_GET['name'])) {
+        $name    = $_GET['name'];
+        $address = $_GET['address'];
+
+        $insertQuery = $connection->prepare("INSERT INTO students (id, name, address) VALUES (?, ?, ?);");
+        $insertQuery->execute([null, $name, $address]);
+    }
+
+    $query    = $connection->query("SELECT * FROM students ORDER BY id DESC;");
     $students = $query->fetchAll();
 ?>
 
@@ -13,6 +21,20 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Students</h1>
+    <div class="container">
+        <form action="" method="get">
+            <div>
+                <label for="name">name</label>
+                <input type="text" name="name">
+            </div>
+            <div>
+            <label for="address">address</label>
+                <textarea name="address" id="" cols="30" rows="10"></textarea>
+            </div>
+            <button type="submit">Save</button>
+        </form>
+    </div>
     <pre>
         <?php print_r($students) ?>
     </pre>
