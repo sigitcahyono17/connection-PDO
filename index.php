@@ -35,8 +35,25 @@
             <button type="submit">Save</button>
         </form>
     </div>
-    <pre>
-        <?php print_r($students) ?>
-    </pre>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+        <?php foreach ($students as $student): ?>
+            <tr>
+                <td><?= $student['id'] ?></td>
+                <td><?= $student['name'] ?></td>
+                <td><?= $student['address'] ?></td>
+                <td>
+                    <a href="detail.php?id=<?= $student['id'] ?>">Detail</a> |
+                    <a href="edit.php?id=<?= $student['id'] ?>">Edit</a> |
+                    <a href="delete.php?id=<?= $student['id'] ?>">Delete</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
 </body>
 </html>
