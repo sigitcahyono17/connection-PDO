@@ -1,11 +1,41 @@
 <?php
+    // phpinfo();
+    // die();
     require_once './database/Config.php';
-    if (isset($_GET['name'])) {
-        $name    = $_GET['name'];
-        $address = $_GET['address'];
+    require_once './validation/Validation.php';
+    require_once './validation/rules/RequiredRule.php';
+    $validation = new Validation();
 
-        $insertQuery = $connection->prepare("INSERT INTO students (id, name, address) VALUES (?, ?, ?);");
-        $insertQuery->execute([null, $name, $address]);
+    if (isset($_POST['name'])) {
+        $name    = $_POST['name'];
+        $address = $_POST['address'];
+
+        //before save validate first
+        $attributes = [
+            'name'    => $name,
+            'address' => $address
+        ];
+
+        $rules = [
+            'name' => [ new RequiredRule("New Error for name attribute") ],
+            'address' => [ new RequiredRule()],
+        ];
+
+        $validation->makeRule(
+            $attributes,
+            $rules
+        );
+
+        if (count($validation->getErrors()) <= 0) {
+            //save to database
+            $insertQuery = $connection->prepare("INSERT INTO students (id, name, address) VALUES (?, ?, ?);");
+            $insertQuery->execute([null, $name, $address]);
+
+
+            //redirect to new page if yuu want to prevend resubmit spost
+            // header('Location: '.$_SERVER['PHP_SELF']);
+            // die;
+        }
     }
 
     $query    = $connection->query("SELECT * FROM students ORDER BY id DESC;");
@@ -23,14 +53,16 @@
 <body>
     <h1>Students</h1>
     <div class="container">
-        <form action="" method="get">
+        <form action="" method="POST">
             <div>
                 <label for="name">name</label>
                 <input type="text" name="name">
+                <span style="color: red"><?= $validation->getErrors()['name'][0] ?? '' ?></span>
             </div>
             <div>
-            <label for="address">address</label>
+                <label for="address">address</label>
                 <textarea name="address" id="" cols="30" rows="10"></textarea>
+                <span style="color: red"><?= $validation->getErrors()['address'][0] ?? '' ?></span>
             </div>
             <button type="submit">Save</button>
         </form>
