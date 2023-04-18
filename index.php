@@ -4,6 +4,8 @@
     require_once './database/Config.php';
     require_once './validation/Validation.php';
     require_once './validation/rules/RequiredRule.php';
+    require_once './lib/Pagination.php';
+
     $validation = new Validation();
 
     if (isset($_POST['name'])) {
@@ -26,11 +28,10 @@
             $rules
         );
 
-        if (count($validation->getErrors()) <= 0) {
+        if ($validation->isNoErrors()) { // if no errors save data to database
             //save to database
             $insertQuery = $connection->prepare("INSERT INTO students (id, name, address) VALUES (?, ?, ?);");
             $insertQuery->execute([null, $name, $address]);
-
 
             //redirect to new page if yuu want to prevend resubmit spost
             // header('Location: '.$_SERVER['PHP_SELF']);
@@ -38,7 +39,17 @@
         }
     }
 
-    $query    = $connection->query("SELECT * FROM students ORDER BY id DESC;");
+    $query = $connection->query("SELECT count(*) FROM students;");
+    $totalData = $query->fetchColumn();
+
+    $pagination = new Pagination($totalData, 10);
+
+    // $page = $_GET['page'] ?? 1;
+    // $perPage = 2;
+    // $pages = ceil($totalData / $perPage);
+    // $offset = ($page * $perPage) - $perPage;
+    $query    = $connection->prepare("SELECT * FROM students ORDER BY id DESC LIMIT {$pagination->getPerPage()} OFFSET {$pagination->getOffset()};");
+    $query->execute();
     $students = $query->fetchAll();
 ?>
 
@@ -87,5 +98,10 @@
             </tr>
         <?php endforeach; ?>
     </table>
+    <div class="pagination">
+        <?php for ($i=1; $i <= $pagination->getPages(); $i++): ?>
+            <a href="?page=<?= $i ?>"><?= $i ?></a>
+        <?php endfor; ?>
+    </div>
 </body>
 </html>

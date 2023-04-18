@@ -15,6 +15,11 @@ class Validation {
         }
     }
 
+    public function isNoErrors(): bool
+    {
+        return count($this->errors) <= 0;
+    }
+
     public function getErrors(): array
     {
         return $this->errors;
