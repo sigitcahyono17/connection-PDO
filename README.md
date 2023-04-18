@@ -57,3 +57,8 @@
 5. Meeting 7 (PHP DATABASE CONNECTION)
     - https://drive.google.com/file/d/1CRHVeaYcBpv9ycero5teWEvZe8xC_mlS/view
     - https://drive.google.com/file/d/1spHwc9UCWI7HDkxyeMUwjmNwLGVKRUuI/view
+    - https://drive.google.com/file/d/1lgWGqQ1Z3A2LunANmcaPcLf8i9pI2PEW/view
+    - https://drive.google.com/file/d/1iah_3Yo0hDSfYSaRQE6uFak84Dod8wjs/view
+6. Meeting 8 (PAGINATION)
+    - https://drive.google.com/file/d/1Ui-SBbHZmTgjZOyWrV6tnJzaeokN_jB5/view
+    - https://drive.google.com/file/d/1FJe7IkX1zK938uTtETcNWYVVlMjvgAOY/view
