@@ -1,17 +1,18 @@
 <?php
-$host = "127.0.0.1";
-$database = "net_watch";
-$user = "root";
-$pass = "";
+require_once "libs/MysqlConnection.php";
 
-try {
-    //code...
-    $connection = new PDO(
-        "mysql:host=$host; dbname=$database",
-        $user, $pass
-    );
-} catch (PDOException $e) {
-    print "Error!: {$e->getMessage()}";
-}
-// print_r(PDO::getAvailableDrivers());
+$config = [
+    'host'     => 'localhost', // 127.0.0.1
+    'database' => 'net_watch',
+    'user'     => 'root',
+    'password' => ''
+];
+
+$mysql = new MysqlConnection(
+    $config['host'],
+    $config['database'],
+    $config['user'],
+    $config['password'],
+);
+
 ?>
