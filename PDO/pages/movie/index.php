@@ -2,6 +2,7 @@
 require_once "../../connection.php";
 require_once "../../libs/validation/Validation.php";
 require_once "../../libs/validation/rule/RequiredRule.php";
+require_once "../../libs/Pagination.php";
 
 $connect = $mysql->getConnection();
 $errors = [];
@@ -36,8 +37,20 @@ if (isset($_POST['title']) && isset($_POST['synopsis'])) {
 }
 
 //fetch data from database
-$query = $connect->query("select * from movies;");
+// Result of (value of current page * data per-
+// page) – data per-page
+$queryTotalData = $connect->query("select count(*) from movies");
+$totalData = $queryTotalData->fetchColumn();
+$pagination = new Pagination($totalData);
+// $perPage = Pagination->
+
+$query = $connect->prepare("select * from movies limit ? offset ?;");
+$query->bindParam(1, $pagination->perPage, PDO::PARAM_INT);
+$query->bindParam(2, $pagination->offset, PDO::PARAM_INT);
+$query->execute();
 $movies = $query->fetchAll();
+
+
 
 ?>
 
@@ -99,6 +112,9 @@ $movies = $query->fetchAll();
             </tr>
         <?php endforeach; ?>
     </table>
+    <?php for ($i=1; $i <= $pagination->getPages(); $i++): ?>
+        <a href="/PDO/pages/movie/?page=<?= $i ?>"><?= $i ?></a>
+    <?php endfor; ?>
 </body>
 </html>
 
